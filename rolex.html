@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>rolex</title>
+    <link rel="stylesheet" href="css/rolex_pc.css" media="screen and (min-width:769px)">
+    <link rel="stylesheet" href="css/rolex_ta.css" media="screen and (max-width:768px)">
+    <link rel="stylesheet" href="css/rolex_mb.css" media="screen and (max-width:360px)">
+    <script src="lib/jquery-1.11.1.min.js"></script>
+    <script src="lib/jquery.easing.1.3.js"></script>
+    <script src="lib/jquery.transit.min.js"></script>
+    <script src="lib/jquery.easeScroll.js"></script>
+    <script src="lib/waypoints.min.js"></script>
+    <script src="lib/jquery.counterup.min.js"></script>
+    <script src="lib/jquery.mousewheel.js"></script>
+    <script>    
+    $(function(){
+        /*스크롤*/
+
+        let on_off = false;
+
+        $("html").easeScroll();
+        
+        /*메인애니메이션*/
+        $("#main .watch,#main .txt").addClass('on');
+        $("#main_mb .watch,#main_mb .txt").addClass('on');
+      
+        
+        /* nav a태그 클릭 이벤트처리*/
+        $('a').click(function(e){
+            e.preventDefault();
+            $("html,body").stop().animate({'scrollTop': $(this.hash).offset().top }, 1000, "easeOutExpo");
+            
+        });
+
+       
+        $('.nav_btn').click(function(){
+            on_off = !on_off;
+            if(on_off){
+                $(this).addClass('open');
+                $('aside').addClass('on');
+            }else{
+                $(this).removeClass('open');
+                $('aside').removeClass('on');
+            }
+            
+        });
+        
+        /*보석 애니메이션*/
+        function gem(){
+            $(".gem").animate({"top":0}, 1000).animate({'top':20}, 1000, null, gem );
+        }
+        
+        gem();
+        /*영상팝업창*/
+        
+       $('.video .btn').on('click',function(){
+        
+            $(this).parent().next().show();
+            $(this).parent().next().animate({'opacity':'1'}, 1000, "easeOutExpo");
+            $('.popup').transition({
+                'translate':'-50%, -50%',
+                'scale':1
+            }, 1000, "easeOutExpo");
+        });
+        
+        
+        $('#sub4 #bgarea').on('click',function(){
+            
+            $(this).animate({'opacity':'0', 'z-index':'10'},1000,'easeOutExpo').removeClass('on');
+            $(this).find('.popup').transition({
+                'translate':'-50%, -50%',
+                'scale':'0',
+                'z-index':'10'
+            }, 1000, "easeOutExpo").removeClass('on');
+            location.reload();
+
+        }).hide();
+
+       
+
+
+
+        /*숫자*/
+         $(document).ready(function(){
+           
+           $('.counter').counterUp({
+               delay:10,
+               time:3000
+           });
+           
+       });
+
+
+         /*nav애니*/
+        $(window).scroll(function(){
+
+            let scr_top = $(this).scrollTop();
+
+            $("aside").stop().animate({'top': $(this).scrollTop()+50 }, 1000, "easeOutExpo");
+
+            if(scr_top>=$('#sub1').position().top-100){
+
+                $('.up_btn').addClass('on');
+            }else{
+                $('.up_btn').removeClass('on');
+            }
+
+            if(scr_top>=$('#sub1').position().top-100){
+
+            $('.up_btn').addClass('on');
+            }else{
+            $('.up_btn').removeClass('on');
+            }
+                        
+        });
+
+        
+
+
+        var timeline;
+        var isFn = false;
+        
+       
+        
+        /*캔버스*/
+        
+        $(window).scroll(function(){
+            
+            if(isFn){return; }
+            
+            var scrPos = $(this).scrollTop();    
+
+            if (scrPos >= $('#sub3').position().top ){
+            // Scroll Down
+                $('header').addClass('on');
+            } else {
+                $('header').removeClass('on');
+               
+            }
+
+
+
+
+
+
+
+
+            if(  scrPos>=$("#sub5").position().top-400  &&  scrPos<= $("#sub5").position().top+50    ){
+               
+               //캔버스준비
+                var canv1 = $(".canvas1")[0].getContext("2d");
+                
+                var  deg1 =0;
+                
+                timeline = setInterval( Ani1, 60 );
+               
+               function Ani1(){
+                   
+                   
+                   isFn = true;
+                   //현재값 += 속도+(도착값-현재값);
+                   deg1 += 0.02*(2-deg1);
+                   canv1.clearRect(0,0, 280,280); //캔버스지움
+                   canv1.lineWidth = "30";
+                   canv1.lineCap = "round";
+                   canv1.strokeStyle ="#5b5293";
+                   canv1.beginPath();
+                   canv1.arc( 140, 140, 120, Math.PI*deg1, -1.5, true );
+                   canv1.stroke();
+                   
+               }
+               
+               
+                
+                //캔버스준비
+                var canv2 = $(".canvas2")[0].getContext("2d");
+                
+                var  deg2 =0;
+                
+                timeline = setInterval( Ani2, 60 );
+               
+               function Ani2(){
+                   
+                   
+                   isFn = true;
+                   //현재값 += 속도+(도착값-현재값);
+                   deg2 += 0.02*(2-deg2);
+                   canv2.clearRect(0,0, 280,280); //캔버스지움
+                   canv2.lineWidth = "30";
+                   canv2.lineCap = "round";
+                   canv2.strokeStyle ="#5b5293";
+                   canv2.beginPath();
+                   canv2.arc( 140, 140, 120, Math.PI*deg2, -1.5, true );
+                   canv2.stroke();
+                   
+               }
+                
+                 //캔버스준비
+                var canv3 = $(".canvas3")[0].getContext("2d");
+                
+                var  deg3 =0;
+                
+                timeline = setInterval( Ani3, 60 );
+               
+               function Ani3(){
+                   
+                   
+                   isFn = true;
+                   //현재값 += 속도+(도착값-현재값);
+                   deg3 += 0.02*(2-deg3);
+                   canv3.clearRect(0,0, 280,280); //캔버스지움
+                   canv3.lineWidth = "30";
+                   canv3.lineCap = "round";
+                   canv3.strokeStyle ="#5b5293";
+                   canv3.beginPath();
+                   canv3.arc( 140, 140, 120, Math.PI*deg3, -1.5, true );
+                   canv3.stroke();
+                   
+               }
+                
+                
+                
+                
+                
+                
+               }
+            
+        });
+
+
+        //마우스휠이벤트
+        //마우스휠이벤트
+        $(window).on('mousewheel disableScroll', function(e){
+            e.preventDefault();
+            //return false;
+        
+        });
+
+        $(window).mousewheel(function(e, delta){
+
+        //  html,body가 애니메이션 중이면 함수 강제 종료
+        if($('html,body').is(':animated')){return;}
+
+        //현재 페이지의 높이를 page_h라는 변수에 할당
+        var page_h = $(this).height();
+
+        if(delta<0){
+
+            $('html,body').stop().animate({ scrollTop :'+='+page_h }, 1000, 'easeOutExpo');
+           // location.reload();
+
+        }else{
+
+            $('html,body').stop().animate({ scrollTop :'-='+page_h }, 1000, 'easeOutExpo');
+           // location.reload();
+        }
+
+        });
+        
+    });
+</script>
+    <!-- <script src="js/matchmedia.js"></script> -->
+    <script src="js/header_scr.js"></script>
+</head>
+<body>
+    <header>
+        <div class="center">
+            <h1>
+                <a href="#"><img src="images/logo.png" alt="로고"></a>
+            </h1>
+            <input type="checkbox" id="toggle_btn">
+            <label for="toggle_btn" class="nav_btn icon nav-icon-5">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
+        </div>        
+    </header>
+    <section id="main">
+        <!-- (div.watch>img)+div.txt>h2+h3+p+div.btn>a{MORE} -->
+        <div class="watch"><img src="images/watch1.png" alt="시계1"></div>
+        <div class="txt">
+            <h2>Oyster, 39mm, Eyerose Gold, Diamond</h2>
+            <h3>PEAR<span>MASTER</span>39</h3>
+            <p>롤렉스가 자체 주조한 18캐럿 옐로우,화이트 또는 에버로즈 골드로만 제작되며 다이아몬드, 사파이어,루비 등 아름다운 보석 세팅과 화려한 다이이얼이 특징인 롤렉스 펄마스터는 완만한 곡선의 펄 마스터 디자인을 갖춘 모델입니다.</p>
+            <div class="btn"><a href="#">MORE</a></div>
+        </div>
+    </section>
+    <section id="main_mb">
+        <div class="watch"><img src="images/watch1.png" alt="시계1"></div>
+        <div class="txt">
+            <h2>Oyster, 39mm, Eyerose Gold, Diamond</h2>
+            <h3>PEAR<span>MASTER</span>39</h3>
+            <p>롤렉스가 자체 주조한 18캐럿 옐로우,화이트 또는 에버로즈 골드로만 제작되며 다이아몬드, 사파이어,루비 등 아름다운 보석 세팅과 화려한 다이이얼이 특징인 롤렉스 펄마스터는 완만한 곡선의 펄 마스터 디자인을 갖춘 모델입니다.</p>
+            <div class="btn"><a href="#">MORE</a></div>
+        </div>
+    </section>
+    <section id="sub1">
+        <div class="center">
+            <!-- (div.txt>(div.title>h2>span)+p>span)+div.watch>img -->
+            <div class="txt">
+                <div class="title">
+                    <h2>세계에서 가장<br>아름다운 <span>다이아몬드</span></h2>
+                </div>
+                <p><span>Pearlmaster 39</span>를 우아하게 장식한 다이아몬드들은 엄격한 기준에 따라 선정되며, 보석의 가장 강렬한 광채를 최대한 끌어낼 수 있는 정교한 전통 기법으로 세팅합니다. 롤렉스가 보유한 자체 보석학 연구소에서는 숙련된 전문가들이 보석의 품질을 관리합니다. 선택된 보석들은 롤게스 의 인하우스 세팅 장인 들의 손에서 보석의 자연스러운 광채를 극대화 할 수 있도록 세팅합니다. 보석 자체의 탁월한 품질 외에도 롤렉스 보석 세팅의 명성을 높이는 몇가지 기본 조건이 더 있습니다. 보석의 높이와 방향, 위치가 정확히 정렬 되어야하고, 보석이 견고하여야 하며, 세팅이 아름답고 규칙적이어야 하고, 비즈의 미감이 뛰어나야 합니다.</p>
+            </div>
+            <div class="watch"><img src="images/watch2.png" alt="시계2"></div>
+        </div>
+    </section>
+    <section id="sub2">
+        <div class="center">
+            <div class="txt">
+                <div class="title">
+                    <h2>펄마스터 브래슬릿</h2>
+                </div>
+                <ul class="dia">
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+                <p class="txt_p">부드러운 둥근 라인이 특징인 18캐럿 골드 솔리드 링크로 구성된 펄마스터 브래슬릿은<br><span>Oyster Perpetual Pearlmaster 39&nbsp;</span>만의 개성을 나타냄과 동시에 착용시 편안함을<br>극대화 해줍니다. 또한 우아하면서도 기능적인 크라운 클라스프가 겉으로 보이지 않게<br>장착되어 있으며, 일부 모델의 브래슬릿 중간 링크에는 18캐럿 화이트골드 위에 다이아몬드가<br>아름답게 세팅되어 있습니다. 배젤과 다이얼로 은은하게 이어지는 이 매혹적인 보석세팅은<br> 정통워치메이킹 걸작품의 아름다움을 완성해 줍니다.</p>
+                <p class="txt_m">부드러운 둥근 라인이 특징인 18캐럿 골드 솔리드 링크로 구성된 펄마스터 브래슬릿은<br><span>Oyster Perpetual Pearlmaster 39&nbsp;</span>만의 개성을 나타냄과 동시에 착용시 편안함을<br>극대화 해줍니다. 또한 우아하면서도 기능적인 크라운 클라스프가 겉으로 보이지 않게<br>장착되어 있으며, 일부 모델의 브래슬릿 중간 링크에는 18캐럿 화이트골드 위에 다이아몬드가<br>아름답게 세팅되어 있습니다. 배젤과 다이얼로 은은하게 이어지는 이 매혹적인 보석세팅은<br> 정통워치메이킹 걸작품의 아름다움을 완성해 줍니다.</p>
+            </div>
+        </div>
+    </section>
+    <section id="sub3">
+        <div class="box"></div>
+        <div class="center">
+            <div class="txt">
+                <h2 >보석세팅</h2>
+                <p>롤렉스가 엄격하게 선별한 최고급 보석들은 아름다운 광채와<br>정교한 세팅을 통해 보석 시계에 최고의 품격을 부여합니다</p>
+                <div class="btn"><a href="#">자세히보기</a></div>
+            </div>
+        </div>
+    </section>
+    <section id="sub4">
+        <!-- div.gem+(div.title>img)+(div.video>div.center>div.txt>h2+p)+div.btn>img -->
+        <div class="gem"></div>
+        <div class="title"><img src="images/title1.png" alt="제목1"></div>
+        <div class="video">
+            <div class="center">
+                <div class="txt">
+                    <h2>롤렉스 다이얼의 기술과<br> 미학을 눈으로 체험해 보세요</h2>
+                    <p>다이얼 제작은 진정한 '메티에다르(metier d'art)'입니다. 롤렉스는 다이얼 제작의 전 과정을 자체 메뉴팩처에서 담당하는 극히 드문 워치메이커 중 하나입니다. 롤렉스는 진주, 골드, 메테오라이트, 다이아몬드 등  최고급 소재를 사용하며 다이얼에 탁월한 아름다움과 독특한 개성을 부여합니다.</p>
+                </div>
+            </div>
+            <div class="btn"><img src="images/play.png" alt="플레이버튼이미지"></div>
+        </div>
+        <!-- 팝업디자인 -->
+         <div id="bgarea">
+            <div class="popup">
+                <iframe width="800" height="450" src="https://www.youtube.com/embed/VTxR8w76-P8?si=7fbrCdhGru1aRUtZ"title='YouTube video player' frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+         </div>
+    </section>
+    <section id="sub5">
+        <div class="center">
+            <!-- h2+ul.test_list>(li>canvas.canvas$+(div>span.counter)+h4+h5+p>span)*3 -->
+            <h2>TESTED TO EXTREMES</h2>
+            <ul class="test_list">
+                <li>
+                    <canvas class="canvas1" width="300px" height="300px"></canvas>
+                    <div><span class="counter">5,000</span></div>
+                    <div class="canv_txt">
+                        <h4>충격에 대한 저항력</h4>
+                        <h5>충격시험</h5>
+                        <p>롤렉스 시계는 출시 전, 20개 이상의 다양한 낙하 시험을 통과해야만 합니다. 가장 엄격한 승인 시험은 벨리에로써 강력한 숫양(ram)의 이름에서 유래되었습니다. 이러한 자체적인 충격 시험 장비는<span>자동차 충돌 시험의 수백 배에 해당하는 5,000G</span>의 충격을 시계에 가합니다. 이러한 충격에도 롤렉스 시계는 롤렉스에 걸맞는 최고 수준의 정확성과 외관을 유지하며 손상 없이 정상적으로 작동해야 합니다.</p>
+                    </div>
+                </li>
+                <li>
+                    <canvas class="canvas2" width="300px" height="300px"></canvas>
+                    <div><span class="counter">100</span></div>
+                    <div class="canv_txt">
+                        <h4>구성요소의 내구성</h4>
+                        <h5>방수시험</h5>
+                        <p>모든 Oyster Perpetual 모델은 무브먼트를 물, 먼지 및 충격으로 부터 최적의 상태로 보호하는 오이스터 케이스를 갖추고 있습니다. 롤렉스는 출고하기 전, 물 속에 담근후 검증된 깊이에서 받는 압력보다 10% 더 큰 압력을 가하며, 그중 다이빙 워치의 경우에는 25% 더 큰 압력을 가하는 방수 시험을 합니다. 이시험은<span>100미터 이상의 수압에 견딜 수 있는 </span>것이 롤렉스 오이스터의 전부가 아님을 의미합니다.</p>
+                    </div>
+                </li>
+                <li>
+                    <canvas class="canvas3" width="300px" height="300px"></canvas>
+                    <div><span class="counter">24</span></div>
+                    <div class="canv_txt">
+                        <h4>1주일 간의 모의 시험</h4>
+                        <h5>노화시험</h5>
+                        <p>플랑레와트 생산 단지에서는 안전 유리 스크린 뒤로 흰색 로봇의 부산한 행동이 24시간 지속됩니다. 마치 베이스에 단단히 고정되어 있는 관절로 연결된 팡이 시계가 일정한 간격을 두고 임의로 반복해서 움직이는 것처럼 보입니다. 로봇은 시계가 어떻게 작동할 것인지에 관한 피드백을 디자이너에게 전달하기 위해<span>1주일안에 다년간 사용한 결과를 만들어 모의시험</span>할수 있도록 설계되었습니다.</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </section>
+    <section id="sub6">
+        <div class="box"></div>
+        <div class="contents">
+            <div class="title"><img src="images/title2.png" alt="제목2"></div>
+            <p>새로운 Pearlmaster 39는 최상의 성능을 구현하기 위하여 롤렉스에서 직접 개발하고 제작한 무브먼트인 칼리버 3235를 탑제하고 있습니다. 스위스 크로노미터 인증기과(COSC)에서 스위스 크로노미터 인증을 획득한 무브먼트의 케이스 조립을 완료한 뒤, 다시 한번 2차 테스트를 실시합니다. 일상적인 사용에서 공인 크로노미터 보다 2배 정도 엄격하게 정밀한 성능을 보장하는 롤렉스의 기준을 만족시키는지 확인하기위해서입니다. 조립이 완료된 시계에 대한 최종 품질 관리는 롤렉스에서 특별히 개발한 하이테크 장비를 이용하여 롤렉스 만의 방법으로 진행됩니다.</p>
+        </div>
+    </section>
+    <section id="sub7">
+        <div class="center">
+            <!-- h2+ul.step_list>(li.circle>div.txt>h3+p)*6 -->
+            <h2>THE ROLEX SERVICE PROCEDURE</h2>
+            <ul class="step_list">
+                <li class="circle">
+                    <div class="txt">
+                        <h3>1단계</h3>
+                        <p>무브먼트<br>분해 및 세척</p>
+                    </div>
+                </li>
+                <li class="circle">
+                    <div class="txt">
+                        <h3>2단계</h3>
+                        <p>정확도<br>무브먼트 재조립</p>
+                    </div>
+                </li>
+                <li class="circle">
+                    <div class="txt">
+                        <h3>3단계</h3>
+                        <p>정확도<br>테스트</p>
+                    </div>
+                </li>
+                <li class="circle">
+                    <div class="txt">
+                        <h3>4단계</h3>
+                        <p>광택작업 및<br>케이스 재조립</p>
+                    </div>
+                </li>
+                <li class="circle">
+                    <div class="txt">
+                        <h3>5단계</h3>
+                        <p>방수테스트 및<br>최종품질 검사</p>
+                    </div>
+                </li>
+                <li class="circle">
+                    <div class="txt">
+                        <h3>6단계</h3>
+                        <p>마무리단계</p>
+                    </div>
+                </li>
+            </ul>
+            <!-- div.service>(div.title>h2{2년간의서비스보증기간})+(ul.dia>li*3)+p -->
+            <div class="service">
+                <div class="title">
+                    <h2>2년간의 서비스 보증기간</h2>
+                </div>
+                <ul class="dia">
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+                <p>오버홀을 받은 시계의 서비스 보증기간은 2년 입니다. 하지만 취급 부주의 로 인해 시꼐가 손상되었을때에는 보증 서비스를 받으실 수 없습니다. 또한 비공식 서비스 기관을 통하여 작업이 이루어 지거나, 정품이 아닌 부품이나 악세서리로 변, 개조된 경우에도 롤렉스 의 보증 서비스를 받으실 수 없습니다.</p>
+            </div>
+        </div>
+    </section>
+    <footer>Copyright &copy; Rolex Corporation.ALL Rights Reserved.</footer>
+    <aside>
+        <nav>
+            <ul class="scr_nav">
+                <li><a href="#sub1">Diamond</a></li>
+                <li><a href="#sub2">Bracelet</a></li>
+                <li><a href="#sub3">Gem-set</a></li>
+                <li><a href="#sub4">Pear Master</a></li>
+                <li><a href="#sub5">Reference</a></li>
+                <li><a href="#sub6">Movement</a></li>
+                <li><a href="#sub7">Service</a></li>
+            </ul>
+        </nav>
+    </aside>
+    <div class="up_btn"><a href="#main">Top ▲</a></div>
+
+
+    
+   
+</body>
+</html>
