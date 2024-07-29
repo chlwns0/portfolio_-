@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COMPOSE_MB</title>
+    <link rel="stylesheet" href="css/swiper.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Jua&family=Noto+Sans+KR:wght@100..900&display=swap"
+        rel="stylesheet">
+    <!-- Swiper JS -->
+    <script src="js/swiper.js"></script>
+    <script src="js/script.js"></script>
+    <script src="lib/jquery-1.11.1.min.js"></script>
+    <script src="lib/jquery-3.1.1.min.js"></script>
+    <script src="lib/jquery.easing.1.3.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+</head>
+
+<body>
+    <header>
+        <h1><a href="#"><img src="img/logo.png" alt=""></a></h1>
+        <nav>
+            <span class="img1"><img src="img/logo_name.png" alt=""></span>
+            <span class="img2"><img src="img/카트.png" alt=""></span>
+        </nav>
+        <section id="wrap">
+            <div class="wrap">
+                <h1>
+                    <img src="img/logo_name.png" alt="">
+                    <span>X</span>
+                </h1>
+                <ul id="sub">
+                    <li class="menu1"><a href="">관심매장 등록</a></li>
+                    <li class="menu2"><a href="">모바일 쿠폰 등록</a></li>
+                    <li class="menu3"><a href="">회원 정보 등록</a></li>
+                    <li class="menu4"><a href="">결제 수단 등록</a></li>
+                    <li class="menu5"><a href="">앱 오더 안내</a></li>
+                </ul>
+            </div>
+        </section>
+    </header>
+
+
+    <section id="cash">
+        <div class="order">
+            <span>X</span>
+            <div class="od1">
+                <h2>매장 주문</h2>
+                <p>매장 및 픽업 서비스로 바로 드셔보세요.</p>
+                <img src="img/매장.png" alt="">
+            </div>
+            <div class="od2">
+                <h2>배달 주문</h2>
+                <p>배달로 쉽게 컴포즈 커피를 만나보세요.</p>
+                <img src="img/배달.png " alt="">
+            </div>
+            <div class="od3">
+                <h2>선물 하기</h2>
+                <p>나의 마음을 전달해 보세요.</p>
+                <img src="img/선물.png" alt="">
+            </div>
+        </div>
+        <div id="card">
+            <h2>COMPOSE PAY</h2>
+            <div class="card"><img src="img/card.png" alt=""></div>
+            <div class="plus">
+                <span>+</span>
+                <h3>결제 수단 등록</h3>
+            </div>
+            <div class="pass">
+                <p>결제 비밀번호 변경</p>
+                <p>카드 삭제 및 해지</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Swiper -->
+    <section id="banner">
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide b1">
+                    <img src="img/배너1.png" alt="">
+                </div>
+                <div class="swiper-slide b2">
+                    <img src="img/배너2.png" alt="">
+                </div>
+                <div class="swiper-slide b3">
+                    <img src="img/배너3.png" alt="">
+                </div>
+            </div>
+            <!-- Add Scrollbar -->
+            <div class="swiper-scrollbar"></div>
+        </div>
+    </section>
+    <section id="banner2">
+
+        <div class="line"></div>
+        <div class="cl1">
+            <div class="cl2">
+                <h2>스탬프</h2>
+                <span>8</span>
+            </div>
+            <div class="line2"></div>
+            <div class="cl3">
+                <h2>쿠폰</h2>
+                <span>0</span>
+            </div>
+        </div>
+
+        <div class="line"></div>
+        <div id="banner3">
+            <h2>최근 주문 내역</h2>
+            <div class="menu">
+                <div>
+                    <img src="img/메뉴1 copy.png" alt="">
+                    <p>자바칩프라프치노</p>
+                </div>
+                <div>
+                    <img src="img/메뉴2 copy.png" alt="">
+                    <p>망고스무디</p>
+                </div>
+                <div>
+                    <img src="img/메뉴3 copy.png" alt="">
+                    <p>팥절미쉐이크</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="dong">
+        <ul>
+            <li class="dong1"><a href="#"><img src="img/logo.png" alt="">주문</a></li>
+        </ul>
+    </div>
+    <footer>
+        <ul>
+            <li><a href="#"><img class="img1" src="img/home.png" alt="">홈</a></li>
+            <li><a href="#"><img class="img2" src="img/info2.png" alt="">마이</a></li>
+            <li><a href="#"><img class="img3" src="img/MENU.png" alt="">메뉴</a></li>
+            <li class="ham"><a href="#"><img class="img4" src="img/ham.png" alt="">더보기</a></li>
+        </ul>
+    </footer>
+
+
+    <!-- Initialize Swiper -->
+    <script>
+        var swiper = new Swiper('.swiper-container', {
+            scrollbar: '.swiper-scrollbar',
+            scrollbarHide: true,
+            slidesPerView: 'auto',
+            centeredSlides: true,
+            spaceBetween: 30,
+            grabCursor: true,
+            effect: 'fade',
+
+        });
+        $(function () {
+            $('footer ul li.ham').click(function (e) {
+                e.preventDefault();
+                $('header #wrap').animate({
+                    top: '0px',
+                    opacity: '1'
+                }, 1000, 'linear');
+            });
+            $('header #wrap .wrap span').click(function (e) {
+                e.preventDefault();
+                $('header #wrap').animate({
+                    top: '-350px',
+                    opacity: '0'
+                }, 1000, 'linear');
+            })
+            $('.dong ul li.dong1').click(function (e) {
+                e.preventDefault();
+                $('#cash').css({ right: '0%' }).animate({ opacity: '1' }, 500, 'linear');
+            });
+
+            $('#cash .order span').click(function (e) {
+                e.preventDefault();
+                $('#cash').animate({ opacity: '0' }, 500, 'linear', function () {
+                    $(this).css({ right: '100%' }); // 애니메이션 종료 후 위치를 초기화
+                });
+            });
+
+
+        });
+
+
+    </script>
+</body>
+
+</html>
